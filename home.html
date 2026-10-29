@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<div
+    onclick="findMissionSymbol('heart')"
+    style="
+        position:fixed;
+        bottom:20px;
+        left:20px;
+        font-size:22px;
+        cursor:pointer;
+        opacity:0.8;
+        z-index:1000;
+    "
+>
+    ❤️
+</div>
+
+<script>
+function findMissionSymbol(symbol) {
+
+    let found =
+        JSON.parse(localStorage.getItem("missionSymbols")) || [];
+
+    if (!found.includes(symbol)) {
+
+        found.push(symbol);
+
+        localStorage.setItem(
+            "missionSymbols",
+            JSON.stringify(found)
+        );
+
+        alert("لقيتي أول رمز! ❤️🔥");
+    }
+}
+</script>
+<body>
+    <div id ="hearts"></div>
+    <div id="sparkles"></div>
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">
+    🎵
+</button>
+   
+
+    <div class="home">
+
+        <div class="heart">❤️</div>
+
+        <h1>عدّت سنة... ❤️</h1>
+
+        <h2>من يوم ما بدأت حكايتنا</h2>
+
+        <p>
+            سنة كاملة من الذكريات والضحك والكلام واللحظات
+            اللي هتفضل دايمًا جزء من حكايتنا.
+        </p>
+
+
+        <!-- العداد -->
+
+        <section class="timer">
+
+            <h2>بقالنا مع بعض ❤️</h2>
+
+            <div class="time-box">
+
+                <div>
+                    <span id="days">0</span>
+                    <small>يوم</small>
+                </div>
+
+                <div>
+                    <span id="hours">0</span>
+                    <small>ساعة</small>
+                </div>
+
+                <div>
+                    <span id="minutes">0</span>
+                    <small>دقيقة</small>
+                </div>
+
+                <div>
+                    <span id="seconds">0</span>
+                    <small>ثانية</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- الذكريات -->
+
+        <section class="memories">
+
+            <h2>ذكرياتنا ❤️</h2>
+
+            <p>شوية من أجمل اللحظات اللي عدّت علينا</p>
+
+            <div class="gallery">
+
+                <div class="photo">
+                    <img src="images/photo1.jpg" alt="ذكرياتنا"
+                    onclick="openImage(this)">
+                    
+                </div>
+
+                <div class="photo">
+                    <img src="images/photo2.jpg" alt="ذكرياتنا" 
+                    onclick="openImage(this)">
+
+                    
+                </div>
+
+                <div class="photo">
+                    <img src="images/photo3.jpg" alt="ذكرياتنا" 
+                    onclick="openImage(this)">
+                    <p>أحلى وقت مع بعض ❤️</p>
+                </div>
+
+                <div class="photo">
+                    <img src="images/photo4.jpg" alt="ذكرياتنا" 
+                    onclick="openImage(this)">
+                    <p>ولسه الحكاية مكملة ❤️</p>
+                </div>
+
+            </div>
+
+        <!-- ❤️ حكايتنا -->
+
+<section class="timeline">
+
+    <h2>حكايتنا ❤️</h2>
+
+    <p>من أول يوم لحد النهارده...</p>
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot">❤️</div>
+
+        <div class="timeline-card">
+
+            <img src="timeline/start.jpg"
+                 alt="بداية الحكاية"
+                 onclick="openImage(this)">
+
+            <small>31/10/2025</small>
+
+            <h3>بداية الحكاية ✨</h3>
+
+            <p>
+                اليوم اللي بدأت فيه أجمل حكاية.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot">✨</div>
+
+        <div class="timeline-card">
+
+            <img src="timeline/memory.jpg"
+                 alt="أول الذكريات"
+                 onclick="openImage(this)">
+
+            <small>أول أيامنا</small>
+
+            <h3>أول الذكريات ❤️</h3>
+
+            <p>
+                ضحك وكلام ومواقف بدأت تكبر حكايتنا.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot">📸</div>
+
+        <div class="timeline-card">
+
+            <img src="timeline/moment.jpg"
+                 alt="لحظات جميلة"
+                 onclick="openImage(this)">
+
+            <small>ذكريات كتير</small>
+
+            <h3>لحظات مش هتتنسي</h3>
+
+            <p>
+                كل لحظة كانت بتضيف صفحة جديدة في حكايتنا.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot">❤️</div>
+
+        <div class="timeline-card">
+
+            <img src="timeline/today.jpg"
+                 alt="لحد النهارده"
+                 onclick="openImage(this)">
+
+            <small>لحد النهارده</small>
+
+            <h3>ولسه الحكاية مكملة...</h3>
+
+            <p>
+                سنة كاملة عدّت، ولسه في ذكريات أحلى جاية.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- الرسالة -->
+
+        <section class="love-letter">
+
+            <h2>رسالة ليكي ❤️</h2>
+
+            <div id="letter"></div>
+            <section class="surprise">
+
+    <button onclick="openSurprise()">
+        افتحي المفاجأة 🎁
+    </button>
+
+    <div id="surpriseBox">
+
+        <div class="big-heart">❤️</div>
+
+        <h2>لسه الحكاية مكملة... ✨</h2>
+
+        <p>
+            مهما عدى وقت، هتفضل السنة دي من أجمل فصول حكايتنا ❤️
+            <br>
+            ودي مش النهاية...
+            <br>
+            دي مجرد بداية لحاجات أحلى كتير.
+        </p>
+
+    </div>
+
+</section>
+
+        </section>
+
+<div class="secret-link">
+    <button onclick="window.location.href='secret.html'">
+        🕵️‍♂️ سر صغير عن حكايتنا ❤️
+    </button>
+</div>
+<div class="secret-link">
+    <button onclick="window.location.href='puzzle.html'">
+        🧩 ركّبي حكايتنا ❤️
+    </button>
+</div>
+<div class="secret-link">
+    <button onclick="window.location.href='vault.html'">
+        🔐 الخزنة السرية ❤️
+    </button>
+</div>
+<div class="secret-link">
+    <button onclick="window.location.href='mission.html'">
+        🕵️‍♂️ المهمة السرية 🔥
+    </button>
+</div>
+<div class="secret-link">
+    <button onclick="window.location.href='love.html'">
+        ❤️ قلب الكلام
+    </button>
+</div>
+<div class="secret-link">
+    <button onclick="window.location.href='drawing.html'">
+        ✨ رسمة يمني ❤️
+    </button>
+</div>
+<div class="secret-link">
+    <button onclick="window.location.href='yemeni.html'">
+        💗 صور يمني 🎵
+    </button>
+</div>
+
+        <h2>كل سنة وإنتِ معايا ❤️</h2>
+
+    </div>
+
+<div id="imageViewer" class="image-viewer" onclick="closeImage()">
+    <span>×</span>
+    <img id="bigImage">
+</div>
+    <!-- لازم السكريبت يكون هنا في الآخر -->
+
+
+    <script src="script.js"></script>
+<script>
+function findMissionSymbol(symbol) {
+
+    let found = JSON.parse(
+        sessionStorage.getItem("missionSymbols") || "[]"
+    );
+
+    if (!found.includes(symbol)) {
+
+        found.push(symbol);
+
+        sessionStorage.setItem(
+            "missionSymbols",
+            JSON.stringify(found)
+        );
+
+        alert("🔓 لقيتي رمز سري! ❤️");
+    }
+}
+</script>
+</body>
+
+</html>

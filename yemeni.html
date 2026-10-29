@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى يمني ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Tahoma, Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, #ffb6d5, #ff70aa, #f7438e);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: min(100% - 28px, 900px);
+            margin: auto;
+            padding: 35px 0 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(27px, 6vw, 42px);
+            text-shadow: 0 3px 15px #d83276;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            line-height: 1.9;
+            margin: 0 auto 25px;
+        }
+
+        .music-box {
+            background: #ffffff35;
+            border: 1px solid #ffffff75;
+            border-radius: 22px;
+            padding: 18px;
+            margin: 0 auto 30px;
+            max-width: 440px;
+            box-shadow: 0 8px 25px #b92b6930;
+            backdrop-filter: blur(8px);
+        }
+
+        .music-box p {
+            margin: 0 0 12px;
+            font-weight: bold;
+        }
+
+        audio {
+            width: 100%;
+            height: 42px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .photo {
+            margin: 0;
+            padding: 8px;
+            border-radius: 19px;
+            background: #ffffff65;
+            border: 1px solid #ffffffa0;
+            box-shadow: 0 8px 22px #9e245630;
+            animation: appear 0.8s ease both;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .photo:hover {
+            transform: translateY(-6px) rotate(-1deg);
+            box-shadow: 0 12px 30px #9e245655;
+        }
+
+        .photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 13px;
+        }
+
+        .photo figcaption {
+            padding: 10px 2px 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .ending {
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: bold;
+            margin-top: 35px;
+            text-shadow: 0 2px 12px #c72c70;
+            line-height: 1.8;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            background: #ffffff35;
+            border: 1px solid #ffffff85;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #ffffff60;
+            transform: scale(1.04);
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -40px;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatUp linear forwards;
+            opacity: 0.65;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.65;
+            }
+            to {
+                transform: translateY(-110vh) rotate(35deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding-top: 25px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .photo {
+                padding: 6px;
+                border-radius: 14px;
+            }
+
+            .photo img {
+                border-radius: 10px;
+            }
+
+            .photo figcaption {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        /* تكبير الصور */
+.gallery img {
+    cursor: zoom-in;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 25px #ff69b480;
+}
+
+/* خلفية عرض الصورة الكبيرة */
+#imageViewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(30, 0, 20, 0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    cursor: zoom-out;
+}
+
+#imageViewer img {
+    max-width: 95%;
+    max-height: 85vh;
+    object-fit: contain;
+    border: 3px solid white;
+    border-radius: 18px;
+    box-shadow: 0 0 30px #ff69b4;
+    animation: imagePop 0.3s ease;
+}
+
+@keyframes imagePop {
+    from { transform: scale(0.75); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* القلوب المتحركة */
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 999;
+    pointer-events: none;
+    animation: heartRise 6s linear forwards;
+}
+
+@keyframes heartRise {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.85; }
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* تأثير الكتابة */
+.drawing-text {
+    color: #d63384;
+    font-size: clamp(22px, 5vw, 36px);
+    text-align: center;
+    margin: 25px 10px;
+    animation: textGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 4px #ffb6d9; }
+    to { text-shadow: 0 0 18px #ff69b4; }
+}
+    </style>
+</head>
+
+<body>
+    <main class="container">
+
+        <h1>إلى يمني ❤️</h1>
+        <p class="subtitle">
+            ست صور، وأغنية، وحكاية بحب أعيشها معاكي كل يوم 💗
+        </p>
+
+        <section class="music-box">
+            <p>🎵 أغنيتنا الخاصة ❤️</p>
+            <audio controls loop preload="metadata">
+                <source src="yemeni.mp3" type="audio/mpeg">
+                المتصفح لا يدعم تشغيل الصوت.
+            </audio>
+        </section>
+
+        <section class="gallery">
+            <figure class="photo">
+                <img src="yemeni_photos/photo1.jpg" alt="يمني 1">
+                <figcaption>أجمل عيون ❤️</figcaption>
+            </figure>
+
+            <figure class="photo">
+                <img src="yemeni_photos/photo2.jpg" alt="يمني 2">
+                <figcaption>ست البنااات 💗</figcaption>
+            </figure>
+
+            <figure class="photo">
+                <img src="yemeni_photos/photo3.jpg" alt="يمني 3">
+                <figcaption>ضحكتك بالدنيا كلها 🥹</figcaption>
+            </figure>
+
+            <figure class="photo">
+                <img src="yemeni_photos/photo4.jpg" alt="يمني 4">
+                <figcaption>تفاصيل بحبها فيكي 🌷</figcaption>
+            </figure>
+
+            <figure class="photo">
+                <img src="yemeni_photos/photo5.jpg" alt="يمني 5">
+                <figcaption>إنتِ حتة من قلبي ❤️</figcaption>
+            </figure>
+
+            <figure class="photo">
+                <img src="yemeni_photos/photo6.jpg" alt="يمني 6">
+                <figcaption>والحكاية لسه مكملة ♾️</figcaption>
+            </figure>
+        </section>
+
+        <p class="ending">
+            كل سنة وإنتِ معايا يا يمني ❤️<br>
+            31/10/2025 — بداية حكايتنا
+        </p>
+
+        <a class="back-button" href="home.html">
+            ❤️ رجوع للموقع
+        </a>
+
+    </main>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("span");
+            heart.className = "heart";
+            heart.textContent = Math.random() > 0.3 ? "❤️" : "💗";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (12 + Math.random() * 18) + "px";
+            heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 12500);
+        }
+
+        setInterval(createHeart, 650);
+    </script>
+    <div id="imageViewer" onclick="closeImageViewer()">
+    <img id="largeImage" src="" alt="صورة يمني">
+</div>
+
+<h2 class="drawing-text">يمني.. أجمل حكاية في حياتي ❤️</h2>
+<script>
+    // تكبير الصور عند الضغط عليها
+    document.querySelectorAll(".gallery img").forEach(function (photo) {
+        photo.addEventListener("click", function () {
+            document.getElementById("largeImage").src = this.src;
+            document.getElementById("imageViewer").style.display = "flex";
+        });
+    });
+
+    function closeImageViewer() {
+        document.getElementById("imageViewer").style.display = "none";
+    }
+
+    // قلوب متحركة بهدوء
+    function createFloatingHeart() {
+        const heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.textContent = ["💗", "💕", "❤️", "💖", "🩷"][
+            Math.floor(Math.random() * 5)
+        ];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (14 + Math.random() * 18) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function () {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createFloatingHeart, 1100);
+</script>
+</body>
+</html>

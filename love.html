@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I Love You ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #ffd6e2,
+                    #ff7198,
+                    #b30047
+                );
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           القلب والكلام المتحرك
+        ========================= */
+
+        .scene {
+
+            position: relative;
+
+            width: min(92vw, 700px);
+            height: min(92vw, 700px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .moving-word {
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            color: white;
+
+            font-size: clamp(9px, 1.7vw, 16px);
+
+            font-weight: bold;
+
+            white-space: nowrap;
+
+            pointer-events: none;
+
+            text-shadow:
+                0 0 5px rgba(255,255,255,.9),
+                0 0 12px rgba(255,20,80,.8);
+
+        }
+
+
+        /* =========================
+           الكلام الثابت في النص
+        ========================= */
+
+        .center-text {
+
+            position: absolute;
+
+            z-index: 50;
+
+            color: white;
+
+            font-size: clamp(28px, 6vw, 55px);
+
+            font-weight: bold;
+
+            text-align: center;
+
+            white-space: nowrap;
+
+            text-shadow:
+                0 0 10px white,
+                0 0 25px #ff1744,
+                0 0 45px #ff1744;
+
+            animation: centerBeat 1.7s infinite ease-in-out;
+        }
+
+
+        @keyframes centerBeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+        }
+
+
+        /* =========================
+           زرار الرجوع
+        ========================= */
+
+        .back-button {
+
+            position: fixed;
+
+            left: 50%;
+            bottom: 22px;
+
+            transform: translateX(-50%);
+
+            z-index: 100;
+        }
+
+
+        .back-button button {
+
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 30px;
+
+            background: white;
+
+            color: #d6336c;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.25);
+
+            transition: .3s;
+        }
+
+
+        .back-button button:hover {
+
+            transform: scale(1.08);
+
+        }
+
+
+        /* =========================
+           زرار الموسيقى
+        ========================= */
+
+        .music-btn {
+
+            position: fixed;
+
+            top: 20px;
+            right: 20px;
+
+            z-index: 1000;
+
+            width: 50px;
+            height: 50px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.25);
+
+            transition: .3s;
+        }
+
+
+        .music-btn:hover {
+
+            transform: scale(1.1);
+
+        }
+
+
+        /* =========================
+           الموبايل
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .scene {
+
+                width: 96vw;
+                height: 96vw;
+
+            }
+
+            .moving-word {
+
+                font-size: 8px;
+
+            }
+
+            .center-text {
+
+                font-size: 30px;
+
+            }
+
+            .back-button button {
+
+                padding: 12px 24px;
+
+                font-size: 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         الأغنية
+    ========================= -->
+
+    <audio id="music" loop>
+
+        <source src="song.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- زرار الموسيقى -->
+
+    <button class="music-btn" onclick="toggleMusic()">
+        🎵
+    </button>
+
+
+
+    <!-- =========================
+         القلب
+    ========================= -->
+
+    <div class="scene">
+
+        <!-- الكلام الثابت -->
+
+        <div class="center-text">
+            I Love You
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         زرار الرجوع
+    ========================= -->
+
+    <div class="back-button">
+
+        <button onclick="window.location.href='home.html'">
+            🏠 رجوع لحكايتنا
+        </button>
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =========================
+           إعداد القلب
+        ========================= */
+
+        const scene =
+            document.querySelector(".scene");
+
+
+        const points = [];
+
+
+        /*
+            معادلة القلب
+        */
+
+        for (
+            let t = 0;
+            t < Math.PI * 2;
+            t += 0.025
+        ) {
+
+            const x =
+                16 * Math.pow(Math.sin(t), 3);
+
+
+            const y =
+                13 * Math.cos(t)
+                - 5 * Math.cos(2 * t)
+                - 2 * Math.cos(3 * t)
+                - Math.cos(4 * t);
+
+
+            points.push({
+
+                x: x,
+                y: -y
+
+            });
+
+        }
+
+
+
+        /* =========================
+           حجم القلب
+        ========================= */
+
+        const scale =
+            Math.min(
+                scene.clientWidth,
+                scene.clientHeight
+            ) / 36;
+
+
+
+        /* =========================
+           عدد الكلمات
+        ========================= */
+
+        const words = [];
+
+
+        const numberOfWords = 150;
+
+
+
+        for (
+            let i = 0;
+            i < numberOfWords;
+            i++
+        ) {
+
+            const word =
+                document.createElement("div");
+
+
+            word.className =
+                "moving-word";
+
+
+            word.innerText =
+                "I love you yamooontyyyy";
+
+
+            scene.appendChild(word);
+
+
+            words.push(word);
+
+        }
+
+
+
+        /* =========================
+           الحركة
+        ========================= */
+
+        let position = 0;
+
+
+        function animate() {
+
+
+            words.forEach(
+                (word, index) => {
+
+
+                    /*
+                       كل كلمة ورا اللي قبلها
+                    */
+
+                    let p =
+                        Math.floor(
+                            position -
+                            index * 3.5
+                        );
+
+
+                    p =
+                        (
+                            (p % points.length)
+                            + points.length
+                        )
+                        % points.length;
+
+
+                    const point =
+                        points[p];
+
+
+
+                    /*
+                       تحريك الكلمة
+                    */
+
+                    word.style.transform =
+                        `
+                        translate(
+                            ${point.x * scale}px,
+                            ${point.y * scale}px
+                        )
+                        translate(-50%, -50%)
+                        `;
+
+                }
+            );
+
+
+            /*
+               سرعة الحركة
+
+               الرقم الأصغر = أبطأ
+            */
+
+            position += 0.08;
+
+
+            requestAnimationFrame(animate);
+
+        }
+
+
+        animate();
+
+
+
+        /* =========================
+           زرار الموسيقى
+        ========================= */
+
+        function toggleMusic() {
+
+            const music =
+                document.getElementById("music");
+
+
+            const button =
+                document.querySelector(".music-btn");
+
+
+            if (!music || !button) {
+                return;
+            }
+
+
+            if (music.paused) {
+
+                music.play()
+                    .then(() => {
+
+                        button.innerHTML = "⏸️";
+
+                    })
+                    .catch(() => {
+
+                        button.innerHTML = "🎵";
+
+                    });
+
+            }
+
+            else {
+
+                music.pause();
+
+                button.innerHTML = "🎵";
+
+            }
+
+        }
+
+    </script>
+
+
+    <!-- script.js الخاص بالموقع -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

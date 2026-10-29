@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ركّبي حكايتنا ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .puzzle-page {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px 15px;
+        }
+
+        .puzzle-page h1 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .puzzle-page p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        #puzzle {
+            width: 330px;
+            height: 330px;
+            max-width: 90vw;
+            max-height: 90vw;
+
+            margin: 25px auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+
+            border-radius: 20px;
+            overflow: hidden;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .piece {
+            background-image: url("./puzzle.jpg");
+            background-size: 330px 330px;
+
+            border: 1px solid rgba(255,255,255,0.5);
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .piece:hover {
+            transform: scale(0.97);
+        }
+
+        .selected {
+            box-shadow: inset 0 0 0 4px white;
+            transform: scale(0.95);
+        }
+
+        #message {
+            display: none;
+            margin-top: 25px;
+
+            padding: 25px;
+
+            border-radius: 25px;
+
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(10px);
+
+            font-size: 21px;
+            line-height: 1.8;
+        }
+
+        .back-btn {
+            margin-top: 25px;
+
+            border: none;
+            padding: 13px 25px;
+
+            border-radius: 25px;
+
+            background: white;
+            color: #d63384;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🎵 الموسيقى -->
+    <audio id="music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" onclick="toggleMusic()">
+        🎵
+    </button>
+
+
+    <div class="puzzle-page">
+
+        <h1>🧩 ركّبي حكايتنا ❤️</h1>
+
+        <p>
+            رتبي الصور لحد ما تكتمل الصورة ❤️
+        </p>
+
+        <div id="puzzle"></div>
+
+        <div id="message">
+            🎉 عرفتي تركبيها! ❤️<br><br>
+
+            زي ما قطع الصورة اتجمعت وطلعت صورة واحدة جميلة،
+            أتمنى دايمًا تفضل حكايتنا متجمعة وأجمل مع الوقت ❤️✨
+        </div>
+
+        <button class="back-btn" onclick="window.location.href='home.html'">
+            🏠 رجوع للصفحة الرئيسية
+        </button>
+
+    </div>
+
+
+    <script>
+
+        const puzzle = document.getElementById("puzzle");
+
+        let pieces = [];
+
+        let selected = null;
+
+
+        // إنشاء الـ 9 قطع
+        for (let i = 0; i < 9; i++) {
+
+            const piece = document.createElement("div");
+
+            piece.className = "piece";
+
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+
+            piece.style.backgroundPosition =
+                `${col * 50}% ${row * 50}%`;
+
+            piece.dataset.correct = i;
+
+            piece.addEventListener("click", function () {
+
+                if (selected === null) {
+
+                    selected = piece;
+
+                    piece.classList.add("selected");
+
+                } else {
+
+                    swapPieces(selected, piece);
+
+                    selected.classList.remove("selected");
+
+                    selected = null;
+
+                    checkPuzzle();
+                }
+
+            });
+
+            pieces.push(piece);
+
+            puzzle.appendChild(piece);
+        }
+
+
+        // خلط القطع
+        function shuffle() {
+
+            for (let i = pieces.length - 1; i > 0; i--) {
+
+                const j = Math.floor(Math.random() * (i + 1));
+
+                puzzle.appendChild(pieces[j]);
+
+                [pieces[i], pieces[j]] =
+                [pieces[j], pieces[i]];
+            }
+        }
+
+
+        // تبديل قطعتين
+        function swapPieces(a, b) {
+
+            const parent = puzzle;
+
+            const aNext = a.nextSibling;
+
+            const bNext = b.nextSibling;
+
+            if (aNext === b) {
+
+                parent.insertBefore(b, a);
+
+            } else if (bNext === a) {
+
+                parent.insertBefore(a, b);
+
+            } else {
+
+                parent.insertBefore(a, bNext);
+
+                parent.insertBefore(b, aNext);
+            }
+        }
+
+
+        // التأكد من الحل
+        function checkPuzzle() {
+
+            const current = [...puzzle.children];
+
+            let correct = true;
+
+            current.forEach((piece, index) => {
+
+                if (Number(piece.dataset.correct) !== index) {
+                    correct = false;
+                }
+
+            });
+
+
+            if (correct) {
+
+                document.getElementById("message").style.display =
+                    "block";
+
+            }
+
+        }
+
+
+        shuffle();
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

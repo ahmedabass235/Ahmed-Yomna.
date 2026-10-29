@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>المهمة السرية 🕵️‍♂️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .mission-page {
+            min-height: 100vh;
+            padding: 40px 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mission-icon {
+            font-size: 80px;
+            animation: missionFloat 2s infinite ease-in-out;
+        }
+
+        @keyframes missionFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .mission-page h1 {
+            font-size: 38px;
+            margin: 15px 0;
+        }
+
+        .mission-intro {
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .mission-box {
+            width: min(550px, 90%);
+            padding: 35px 25px;
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.3);
+
+            backdrop-filter: blur(12px);
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .symbols {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .symbol {
+            width: 75px;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.2);
+
+            font-size: 38px;
+
+            opacity: 0.3;
+
+            transition: 0.4s;
+        }
+
+        .symbol.found {
+            opacity: 1;
+            transform: scale(1.15);
+
+            box-shadow: 0 0 25px rgba(255,255,255,0.8);
+        }
+
+        .mission-status {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+#finalSecret {      
+            display: none;
+
+            margin-top: 25px;
+            padding: 25px;
+
+            border-radius: 25px;
+
+            background: rgba(255,255,255,0.22);
+
+            animation: finalShow 0.7s ease;
+        }
+
+        @keyframes finalShow {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        #finalSecret h2 {
+            font-size: 28px;
+        }
+
+        #finalSecret p {
+            font-size: 19px;
+            line-height: 2;
+        }
+
+        .back-button {
+            margin-top: 25px;
+        }
+
+        .back-button button {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 25px;
+
+            background: white;
+            color: #d63384;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .back-button button:hover {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+
+
+<body>
+    <audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">
+    🎵
+</button>
+
+<div class="mission-page">
+
+    <div class="mission-icon">
+        🕵️‍♂️
+    </div>
+
+    <h1>المهمة السرية 🔥</h1>
+
+    <p class="mission-intro">
+        عندك مهمة أخيرة... 👀
+        <br>
+        دوري على الـ 3 رموز المستخبيين في الموقع.
+        <br>
+        لما تلاقيهم كلهم، هتكتشفي السر الأخير ❤️
+    </p>
+
+    <div class="mission-box">
+
+        <h2>اجمعي الرموز الثلاثة 👇</h2>
+
+        <div class="symbols">
+
+            <div id="symbol1" class="symbol">
+                ❤️
+            </div>
+
+            <div id="symbol2" class="symbol">
+                🔑
+            </div>
+
+            <div id="symbol3" class="symbol">
+                ⭐
+            </div>
+
+        </div>
+
+        <div class="mission-status" id="status">
+            0 / 3 رموز
+        </div>
+
+        <div id="finalSecret">
+
+            <h2>🎉 المهمة اكتملت!</h2>
+
+            <p>
+                لو وصلتي لهنا...
+                <br>
+                يبقى عرفتي كل أسرار الحكاية ❤️
+                <br><br>
+                والسر الأخير هو:
+                <br>
+                <strong>
+                    أجمل حاجة حصلتلي إن الحكاية دي بدأت من الأساس ❤️✨
+                </strong>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="back-button">
+
+        <button onclick="location.href='home.html'">
+            🏠 رجوع لحكايتنا
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+    if (performance.getEntriesByType("navigation")[0]?.type === "reload") {
+    sessionStorage.removeItem("missionSymbols");
+}
+
+let found = JSON.parse(
+    sessionStorage.getItem("missionSymbols")
+) || [];
+
+function updateMission() {
+
+
+    if (found.includes("heart")) {
+        document.getElementById("symbol1")
+            .classList.add("found");
+    }
+
+    if (found.includes("key")) {
+        document.getElementById("symbol2")
+            .classList.add("found");
+    }
+
+    if (found.includes("star")) {
+        document.getElementById("symbol3")
+            .classList.add("found");
+    }
+
+    document.getElementById("status").innerText =
+        found.length + " / 3 رموز";
+
+    if (found.length === 3) {
+
+        document.getElementById("finalSecret")
+            .style.display = "block";
+    }
+}
+
+updateMission();
+
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

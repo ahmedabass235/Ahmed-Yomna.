@@ -1,0 +1,1032 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+}
+
+.lock-screen {
+    width: 90%;
+    max-width: 400px;
+    padding: 40px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.lock {
+    font-size: 65px;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 18px;
+}
+
+input {
+    width: 90%;
+    padding: 15px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+}
+
+button {
+    padding: 13px 35px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#error {
+    color: #ffe0e0;
+}
+.home {
+    text-align: center;
+    padding: 60px 20px;
+    animation: appear 1.5s ease;
+}
+
+.home .heart {
+    font-size: 80px;
+    animation: beat 1s infinite;
+}
+
+.home h1 {
+    font-size: 45px;
+}
+
+.home h2 {
+    font-size: 28px;
+}
+
+.home p {
+    max-width: 600px;
+    margin: 25px auto;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.counter {
+    margin: 35px auto;
+    padding: 25px;
+    max-width: 350px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    font-size: 22px;
+    line-height: 2;
+}
+
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.memories {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.gallery {
+    max-width: 900px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+
+.photo {
+    background: rgba(255,255,255,0.2);
+    padding: 12px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.photo:hover {
+    transform: scale(1.04);
+}
+
+.photo img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.photo p {
+    margin: 12px 0 5px;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+.memories {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.gallery {
+    max-width: 900px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+
+.photo {
+    background: rgba(255,255,255,0.2);
+    padding: 12px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.photo:hover {
+    transform: scale(1.04);
+}
+
+.photo img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.photo p {
+    margin: 12px 0 5px;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+.timer {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.timer h2 {
+    font-size: 32px;
+}
+
+.time-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.time-box div {
+    background: rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 18px;
+    min-width: 90px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.time-box small {
+    font-size: 16px;
+}
+.love-letter {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+}
+
+.love-letter h2 {
+    font-size: 32px;
+}
+
+#letter {
+    font-size: 21px;
+    line-height: 2;
+    min-height: 100px;
+}
+.surprise {
+    text-align: center;
+    margin: 70px auto;
+}
+
+.surprise button {
+    padding: 16px 35px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4f81;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.surprise button:hover {
+    transform: scale(1.08);
+}
+
+#surpriseBox {
+    display: none;
+    max-width: 600px;
+    margin: 35px auto;
+    padding: 35px 25px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 25px;
+    animation: surpriseAppear 1s ease;
+}
+
+.big-heart {
+    font-size: 90px;
+    animation: beat 1s infinite;
+}
+
+#surpriseBox p {
+    font-size: 20px;
+    line-height: 2;
+}
+
+@keyframes surpriseAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 25px;
+    animation: floatHeart linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+
+}
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+
+    background: white;
+    color: #ff4f81;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4f81;
+    font-size: 16px;
+    cursor: pointer;
+}
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -30px;
+    animation: floatHeart linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #ff4f81;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+    transition: 0.3s;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+/* ✨ ظهور أجزاء الصفحة بالتتابع */
+
+.home > .heart {
+    animation: fadeUp 1s ease 0.2s both;
+}
+
+.home > h1 {
+    animation: fadeUp 1s ease 0.6s both;
+}
+
+.home > h2 {
+    animation: fadeUp 1s ease 1s both;
+}
+
+.home > p {
+    animation: fadeUp 1s ease 1.4s both;
+}
+
+.timer {
+    animation: fadeUp 1s ease 1.8s both;
+}
+
+.memories {
+    animation: fadeUp 1s ease 2.2s both;
+}
+
+.love-letter {
+    animation: fadeUp 1s ease 2.6s both;
+}
+
+.surprise {
+    animation: fadeUp 1s ease 3s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.image-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.image-viewer img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+.image-viewer span {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+}
+/* 📸 حركة صور الذكريات */
+
+.photo {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo:hover {
+    transform: translateY(-8px) rotate(-1deg) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.photo img {
+    transition: transform 0.4s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.03);
+}
+/* ❤️ Timeline */
+
+.timeline {
+    max-width: 700px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.timeline > h2 {
+    font-size: 32px;
+}
+
+.timeline > p {
+    margin-bottom: 50px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 15px 30px;
+    text-align: right;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: 50%;
+    text-align: left;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: -20px;
+    width: 3px;
+    background: rgba(255,255,255,0.5);
+}
+
+.timeline-item:nth-child(even)::before {
+    right: 0;
+}
+
+.timeline-item:nth-child(odd)::before {
+    left: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: white;
+    color: #ff4f81;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    right: -18px;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    left: -18px;
+}
+
+.timeline-card {
+    background: rgba(255,255,255,0.18);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.timeline-card img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.timeline-card img:hover {
+    transform: scale(1.03);
+}
+
+.timeline-card small {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.timeline-card h3 {
+    margin: 8px 0;
+}
+
+.timeline-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* 📱 Timeline على الموبايل */
+
+@media (max-width: 600px) {
+
+    .timeline {
+        padding: 10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd) {
+        width: 100%;
+        margin-left: 0;
+        padding: 15px 20px 15px 55px;
+        text-align: left;
+    }
+
+    .timeline-item::before,
+    .timeline-item:nth-child(even)::before,
+    .timeline-item:nth-child(odd)::before {
+        left: 20px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot,
+    .timeline-item:nth-child(odd) .timeline-dot {
+        left: 1px;
+        right: auto;
+    }
+
+    .timeline-card {
+        padding: 17px;
+    }
+
+    .timeline-card img {
+        max-height: 220px;
+    }
+}
+/* ✨ تحسين شكل الكروت */
+
+.photo,
+.timeline-card,
+.love-letter,
+#surpriseBox,
+.time-box div {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(8px);
+}
+
+
+/* 💎 تأثير أجمل عند المرور */
+
+.photo:hover,
+.timeline-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ❤️ عناوين الأقسام */
+
+.memories h2,
+.timeline h2,
+.love-letter h2,
+.timer h2 {
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ✨ تحسين شكل النص */
+
+.timeline-card p,
+.photo p,
+.love-letter {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 🎵 زر الأغنية */
+
+.music-btn {
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.music-btn:hover {
+    transform: scale(1.12) rotate(5deg);
+}
+
+
+/* 🎁 زر المفاجأة */
+
+.surprise button {
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.surprise button:hover {
+    transform:
+        translateY(-3px)
+        scale(1.06);
+}
+/* ✨ لمعات الخلفية */
+
+#sparkles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.sparkle {
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    opacity: 0;
+    animation: sparkleMove linear forwards;
+}
+
+@keyframes sparkleMove {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    20% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5) translateY(-40px);
+    }
+}
+/* ✨ حركة العناوين */
+
+.home h1 {
+    animation: titleIn 1.2s ease both;
+}
+
+.home > h2 {
+    animation: titleIn 1.2s ease 0.3s both;
+}
+
+.home > p {
+    animation: titleIn 1.2s ease 0.6s both;
+}
+
+@keyframes titleIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ⏳ تحسين شكل العداد */
+
+.time-box {
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.time-box div {
+    min-width: 105px;
+    padding: 18px 12px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease;
+}
+
+.time-box div:hover {
+    transform: translateY(-6px);
+}
+
+.time-box span {
+    font-size: 34px;
+    margin-bottom: 5px;
+}
+
+.time-box small {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* 📱 العداد على الموبايل */
+
+@media (max-width: 600px) {
+
+    .time-box {
+        gap: 10px;
+    }
+
+    .time-box div {
+        min-width: 75px;
+        padding: 15px 8px;
+    }
+
+    .time-box span {
+        font-size: 26px;
+    }
+
+    .time-box small {
+        font-size: 13px;
+    }
+}
+/* 💌 تحسين شكل الرسالة */
+
+.love-letter {
+    position: relative;
+    overflow: hidden;
+
+    padding: 40px 30px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(10px);
+}
+
+.love-letter::before {
+    content: "❤️";
+
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    font-size: 22px;
+
+    opacity: 0.6;
+}
+
+.love-letter::after {
+    content: "❤️";
+
+    position: absolute;
+
+    bottom: 15px;
+    left: 20px;
+
+    font-size: 22px;
+
+    opacity: 0.6;
+}
+
+.love-letter h2 {
+    margin-bottom: 30px;
+
+    font-size: 34px;
+
+    text-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#letter {
+    font-size: 20px;
+
+    line-height: 2.1;
+
+    text-align: right;
+
+    padding: 5px;
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 📱 الرسالة على الموبايل */
+
+@media (max-width: 600px) {
+
+    .love-letter {
+        margin: 60px 10px;
+
+        padding: 30px 20px;
+    }
+
+    .love-letter h2 {
+        font-size: 28px;
+    }
+
+    #letter {
+        font-size: 18px;
+        line-height: 2;
+    }
+}
+/* 🎁 حركة المفاجأة */
+
+#surpriseBox {
+    animation: surpriseOpen 0.7s ease;
+}
+
+@keyframes surpriseOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.7) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.surprise button {
+    transition: 0.3s ease;
+}
+
+.surprise button:hover {
+    transform: scale(1.08);
+}
+/* 🎮 كويز حكايتنا */
+
+#userAnswer {
+    width: 80%;
+    max-width: 450px;
+
+    padding: 15px 20px;
+
+    margin-bottom: 15px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 25px;
+
+    font-size: 17px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.85);
+}
+
+#userAnswer:focus {
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+#result {
+    margin: 20px 0;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    min-height: 30px;
+}
+
+.correct {
+    color: #16803c;
+    animation: resultPop 0.4s ease;
+}
+
+.wrong {
+    color: #c62828;
+    animation: resultPop 0.4s ease;
+}
+
+@keyframes resultPop {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+.secret-link {
+    margin: 50px 0 20px;
+    text-align: center;
+}
+
+.secret-link button {
+    border: none;
+    padding: 15px 28px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.secret-link button:hover {
+    transform: scale(1.08);
+}
